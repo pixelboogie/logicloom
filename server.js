@@ -1,19 +1,23 @@
-//import OpenAI from "openai"
+const PORT = 8000
+const express = require('express')
+const cors = require('cors')
+const app = express()
 const OpenAI = require("openai")
 
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
+app.use(express.json())
+app.use(cors())
+
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+
+app.post('/completion', async (req, res) => {
+    const text = req.body.text
+    const completion = await openai.chat.completions.create({
+        messages: [{"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": text}
+            ],
+        model: "gpt-3.5-turbo",
+      });
+      console.log(completion.choices[0])
 })
 
-async function main() {
-  const completion = await openai.chat.completions.create({
-    messages: [{"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Who won the world series in 2020?"},
-        {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
-        {"role": "user", "content": "Where was it played?"}],
-    model: "gpt-3.5-turbo",
-  });
-
-  console.log(completion.choices[0])
-}
-main()
+app.listen(PORT, () => console.log('Listening on port ${PORT}!'))
