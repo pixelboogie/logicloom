@@ -18,6 +18,7 @@ app.post('/completion', async (req, res) => {
         model: "gpt-3.5-turbo",
       });
       console.log(completion.choices[0])
+      res.send(completion.choices[0])
 })
 
 app.listen(PORT, () => console.log('Listening on port ${PORT}!'))
