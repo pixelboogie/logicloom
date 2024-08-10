@@ -9,7 +9,6 @@ Logic Loom is a web application that demonstrates how to set up and create an Op
 - [Usage](#usage)
 - [Helpful Resources](#helpful-resources)
 - [Helpful Terminal Commands](#helpful-terminal-commands)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Technologies Used
@@ -62,9 +61,6 @@ To set up this project locally, follow these steps:
 
 # Usage #
 Once the application is running, you can type a question into the input field, and the OpenAI-generated response will be displayed on the page.
-
-# Contributing #
-Contributions are welcome! If you'd like to contribute, please fork the repository and submit a pull request. You can also open issues to report bugs or suggest new features.
 
 # License #
 This project is licensed under the MIT License. See the LICENSE file for more information.
